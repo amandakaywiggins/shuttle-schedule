@@ -62,19 +62,18 @@ $("#submit").on("click", function(event){
 
 database.ref().on("child_added" , function(childSnapshot) {
     console.log(childSnapshot.val());
-    console.log($(childSnapshot.val().shuttleName));
 
-    shuttleNameDisplay = $(childSnapshot.val().shuttleName);
-    destinationDisplay = $(childSnapshot.val().destination);
-    frequencyDisplay = $(childSnapshot.val().frequency);
-    firstShuttleDisplay = $(childSnapshot.val().firstShuttle);
-    nextShuttleDisplay = $(childSnapshot.val().nextShuttle);
-    sMinutesToShuttleDisplay = $(childSnapshot.val().sMinutesToShuttle);
+    shuttleNameDisplay = childSnapshot.val().shuttleName;
+    destinationDisplay = childSnapshot.val().destination;
+    frequencyDisplay = childSnapshot.val().frequency;
+    firstShuttleDisplay = childSnapshot.val().firstShuttle;
+    nextShuttleDisplay = childSnapshot.val().nextShuttle;
+    sMinutesToShuttleDisplay = childSnapshot.val().sMinutesToShuttle;
         
-    var shuttleRow = $("<tr>");
+    var shuttleRow = $("<tr class='shuttles'>");
         shuttleRow.append($("<td>" + shuttleNameDisplay + "</td><td>" + destinationDisplay 
-        + "</td><td>" + "</td><td> Runs Every: " + frequencyDisplay + " Minutes</td><td>" + firstShuttleDisplay
-        + "</td><td>" + nextShuttleDisplay + "</td><td> Next Shuttle In: " + sMinutesToShuttleDisplay + " Minutes</td>"))
+        + "</td><td>" + "</td><td> Runs Every: " + frequencyDisplay + " Minutes</td><td>"
+        + nextShuttleDisplay + "</td><td> Next Shuttle In: " + sMinutesToShuttleDisplay + " Minutes</td>"))
         $("tbody").append(shuttleRow);
     }) , function(errorObject) {
             console.log("Errors handled: " + errorObject.code);
@@ -124,8 +123,8 @@ function displayShuttlesArray() {
         var nextShuttle = moment().add(sMinutesToShuttle, "minutes");
 
         shuttleRow.append($("<td>" + shuttleNameDisplay + "</td><td>" + destinationDisplay 
-        + "</td><td>" + "</td><td> Runs Every: " + frequencyDisplay + " Minutes</td><td>" + firstShuttleDisplay
-        + "</td><td>" + nextShuttle.format("hh:mm") + "</td><td> Next Shuttle In: " + sMinutesToShuttle + " Minutes</td>"));
+        + "</td><td>" + "</td><td> Runs Every: " + frequencyDisplay + " Minutes</td><td>"
+        + nextShuttle.format("hh:mm") + "</td><td> Next Shuttle In: " + sMinutesToShuttle + " Minutes</td>"));
         
         $("tbody").append(shuttleRow);
     };
