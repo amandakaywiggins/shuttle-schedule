@@ -47,6 +47,8 @@ $("#submit").on("click", function(event){
     var nextShuttle = moment().add(sMinutesToShuttle, "minutes");
     console.log("Arrival Time: " + moment(nextShuttle).format("hh:mm"));
 
+    nextShuttle = moment(nextShuttle).format("hh:mm").toString();
+
     database.ref().push({
         shuttleName: shuttleName,
         destination: destination,
@@ -57,29 +59,26 @@ $("#submit").on("click", function(event){
     });
 });
 
-database.ref().on("value", function(snapshot) {
-    console.log(snapshot.val());
 
-    database.ref().on("child_added" , function(childSnapshot) {
-        console.log(childSnapshot.val());
-        console.log(childSnapshot.val().shuttleName);
+database.ref().on("child_added" , function(childSnapshot) {
+    console.log(childSnapshot.val());
     
-        shuttleName = $(childSnapshot.val().shuttleName);
-        destination = $(childSnapshot.val().destination);
-        frequency = $(childSnapshot.val().frequency);
-        firstShuttle = $(childSnapshot.val().firstShuttle);
-        nextShuttle = $(childSnapshot.val().nextShuttle);
-        sMinutesToShuttle = $(childSnapshot.val().sMinutesToShuttle);
+    shuttleNameDisplay = $(childSnapshot.val().shuttleName);
+    destinationDisplay = $(childSnapshot.val().destination);
+    frequencyDisplay = $(childSnapshot.val().frequency);
+    firstShuttleDisplay = $(childSnapshot.val().firstShuttle);
+    nextShuttleDisplay = $(childSnapshot.val().nextShuttle);
+    sMinutesToShuttleDisplay = $(childSnapshot.val().sMinutesToShuttle);
         
-
-        var shuttleRow = $("<tr>");
-            shuttleRow.append($("<td>" + shuttleName + "</td><td>" + destination 
-            + "</td><td>" + "</td><td> Runs Every: " + frequency + " Minutes</td><td>" + firstShuttle
-            + "</td><td>" + nextShuttle.format("hh:mm") + "</td><td> Next Shuttle In: " + sMinutesToShuttle + " Minutes</td>"))
-            $("tbody").append(shuttleRow);
-    }) }, function(errorObject) {
+    var shuttleRow = $("<tr>");
+        shuttleRow.append($("<td>" + $(childSnapshot.val().shuttleName) + "</td><td>" + $(childSnapshot.val().destination) 
+        + "</td><td>" + "</td><td> Runs Every: " + $(childSnapshot.val().frequency) + " Minutes</td><td>" + $(childSnapshot.val().firstShuttle)
+        + "</td><td>" + $(childSnapshot.val().nextShuttle) + "</td><td> Next Shuttle In: " + $(childSnapshot.val().sMinutesToShuttle) + " Minutes</td>"))
+        $("tbody").append(shuttleRow);
+    }) , function(errorObject) {
             console.log("Errors handled: " + errorObject.code);
-});
+};
+
 
 var shuttlesArray = [{
         shuttleName: "Lunar Express",
