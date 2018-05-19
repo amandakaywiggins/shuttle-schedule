@@ -62,7 +62,8 @@ $("#submit").on("click", function(event){
 
 database.ref().on("child_added" , function(childSnapshot) {
     console.log(childSnapshot.val());
-    
+    console.log($(childSnapshot.val().shuttleName));
+
     shuttleNameDisplay = $(childSnapshot.val().shuttleName);
     destinationDisplay = $(childSnapshot.val().destination);
     frequencyDisplay = $(childSnapshot.val().frequency);
@@ -71,9 +72,9 @@ database.ref().on("child_added" , function(childSnapshot) {
     sMinutesToShuttleDisplay = $(childSnapshot.val().sMinutesToShuttle);
         
     var shuttleRow = $("<tr>");
-        shuttleRow.append($("<td>" + $(childSnapshot.val().shuttleName) + "</td><td>" + $(childSnapshot.val().destination) 
-        + "</td><td>" + "</td><td> Runs Every: " + $(childSnapshot.val().frequency) + " Minutes</td><td>" + $(childSnapshot.val().firstShuttle)
-        + "</td><td>" + $(childSnapshot.val().nextShuttle) + "</td><td> Next Shuttle In: " + $(childSnapshot.val().sMinutesToShuttle) + " Minutes</td>"))
+        shuttleRow.append($("<td>" + shuttleNameDisplay + "</td><td>" + destinationDisplay 
+        + "</td><td>" + "</td><td> Runs Every: " + frequencyDisplay + " Minutes</td><td>" + firstShuttleDisplay
+        + "</td><td>" + nextShuttleDisplay + "</td><td> Next Shuttle In: " + sMinutesToShuttleDisplay + " Minutes</td>"))
         $("tbody").append(shuttleRow);
     }) , function(errorObject) {
             console.log("Errors handled: " + errorObject.code);
