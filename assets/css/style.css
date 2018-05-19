@@ -1,6 +1,7 @@
 body {
     font-family: "Lucida Console", Monaco, monospace;
     background-image: url('../images/earthspace.jpg');
+    background-size: cover;
     font-weight: bolder;
 }
 
@@ -20,7 +21,6 @@ h2 {
 
 .shuttles {
     background-color: white;
-    border-radius: 6px;
 }
 
 #shuttle-schedule {
@@ -30,10 +30,23 @@ h2 {
     border-color: white;
     padding: 10px;
     margin-bottom: 50px;
+    width: 100%;
 }
 
 hr {
     background-color: white;
+}
+
+.offwhite-label {
+    color: rgb(95, 95, 97);
+}
+
+.almostwhite-label {
+    color: rgb(155, 155, 155);
+}
+
+.white-label {
+    color: white;
 }
 
 .btn {

@@ -127,7 +127,7 @@ function displayShuttlesArray() {
         + "</td><td>" + "</td><td> Runs Every: " + frequencyDisplay + " Minutes</td><td>" + firstShuttleDisplay
         + "</td><td>" + nextShuttle.format("hh:mm") + "</td><td> Next Shuttle In: " + sMinutesToShuttle + " Minutes</td>"));
         
-        $("#shuttle-times").append(shuttleRow);
+        $("tbody").append(shuttleRow);
     };
 };
 
