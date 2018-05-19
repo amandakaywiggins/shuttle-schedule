@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Shuttle Schedule</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Stalinist+One|Unlock" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                    <!--filler col-->
+                </div>
+                <div class="col-md-10" id="header">
+                    <h1>Fly Me to the Moon</h1>
+                </div>
+                <div class="col-md-1">
+                    <!--filler col-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <!--filler col-->
+                </div>
+                <div class="col-md-10" id="shuttle-schedule">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Shuttle Departures</h2>
+                        </div>   
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!--table goes here-->
+                            <table class="table borderless" id="shuttle-table">
+                                <tbody id="shuttle-times">
+                                    <tr id="timetable">
+                                        <th>Shuttle Name</th>
+                                        <th>Destination</th>
+                                        <th>Frequency</th>
+                                        <th>Next Arrival</th>
+                                        <th>Minutes Away</th>
+                                    </tr>
+                                    <!--shuttle schedule will be here-->
+                                </tbody>
+                            </table>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Add Shuttle</h2>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!--form goes here-->
+                            <form>
+                                <div class="form-group">
+                                    <label for="shuttle-name">Shuttle Name</label>
+                                    <input type="shuttle-name" class="form-control" id="shuttle-name-input" placeholder="Shuttle Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="destination">Destination</label>
+                                    <input type="destination" class="form-control" id="destination-input" placeholder="Destination">
+                                </div>
+                                <div class="form-group">
+                                    <label for="first-shuttle">First Shuttle (Military Time)</label>
+                                    <input type="first-shuttle" class="form-control" id="first-shuttle-input" placeholder="First Shuttle">
+                                </div>
+                                <div class="form-group">
+                                    <label for="frequency">Frequency</label>
+                                    <input type="frequency" class="form-control" id="frequency-input" placeholder="Frequency">
+                                </div>
+                                    <button type="submit" class="btn">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <!--filler col-->
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+    <script type="text/javascript" src="assets/javascript/trains.js"></script>
+</html>

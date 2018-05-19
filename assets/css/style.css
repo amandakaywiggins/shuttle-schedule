@@ -1,0 +1,42 @@
+body {
+    font-family: "Lucida Console", Monaco, monospace;
+    background-image: url('../images/earthspace.jpg');
+    font-weight: bolder;
+}
+
+#header {
+    padding: 50px;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Stalinist One', cursive;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Unlock', cursive;
+}
+
+.shuttles {
+    background-color: white;
+    border-radius: 6px;
+}
+
+#shuttle-schedule {
+    border: solid;
+    border-width: 2px;
+    border-radius: 6px;
+    border-color: white;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+hr {
+    background-color: white;
+}
+
+.btn {
+    background-color: black;
+    color: white;
+}
