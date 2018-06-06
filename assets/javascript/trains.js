@@ -9,7 +9,7 @@ var config = {
 };
 
 firebase.initializeApp(config);
-
+//define variables for firebase
 var database = firebase.database();
 
 var shuttleName = "";
@@ -20,7 +20,7 @@ var frequency = 0;
 var sMinutesToShuttle = 0;
 var nextShuttle = "";
 
-
+//click event for submitting new shuttle
 $("#submit").on("click", function(event){
     event.preventDefault();
     
@@ -59,7 +59,7 @@ $("#submit").on("click", function(event){
     });
 });
 
-
+//pull from firebase and append to timetable
 database.ref().on("child_added" , function(childSnapshot) {
     console.log(childSnapshot.val());
 
@@ -67,19 +67,19 @@ database.ref().on("child_added" , function(childSnapshot) {
     destinationDisplay = childSnapshot.val().destination;
     frequencyDisplay = childSnapshot.val().frequency;
     firstShuttleDisplay = childSnapshot.val().firstShuttle;
-    nextShuttleDisplay = childSnapshot.val().nextShuttle;
-    sMinutesToShuttleDisplay = childSnapshot.val().sMinutesToShuttle;
-        
+    nextShuttleDisplay = childSnapshot.val().nextArrival;
+    sMinutesToShuttleDisplay = childSnapshot.val().sMinutestoShuttle;
+
     var shuttleRow = $("<tr class='shuttles'>");
         shuttleRow.append($("<td>" + shuttleNameDisplay + "</td><td>" + destinationDisplay 
-        + "</td><td>" + "</td><td> Runs Every: " + frequencyDisplay + " Minutes</td><td>"
-        + nextShuttleDisplay + "</td><td> Next Shuttle In: " + sMinutesToShuttleDisplay + " Minutes</td>"))
+        + "</td><td> Every:<br>" + frequencyDisplay + " min</td><td>"
+        + nextShuttleDisplay + "</td><td> Next Shuttle:<br>" + sMinutesToShuttleDisplay + " min</td>"))
         $("tbody").append(shuttleRow);
     }) , function(errorObject) {
             console.log("Errors handled: " + errorObject.code);
 };
 
-
+//permanent shuttles
 var shuttlesArray = [{
         shuttleName: "Lunar Express",
         destination: "Luna",
@@ -108,6 +108,8 @@ var shuttlesArray = [{
     }
 ];
 
+
+//display shuttles to timetable
 function displayShuttlesArray() {
     for(i=0; i < shuttlesArray.length; i++) {
         var shuttleRow = $("<tr class='shuttles'>");
@@ -123,8 +125,8 @@ function displayShuttlesArray() {
         var nextShuttle = moment().add(sMinutesToShuttle, "minutes");
 
         shuttleRow.append($("<td>" + shuttleNameDisplay + "</td><td>" + destinationDisplay 
-        + "</td><td>" + "</td><td> Runs Every: " + frequencyDisplay + " Minutes</td><td>"
-        + nextShuttle.format("hh:mm") + "</td><td> Next Shuttle In: " + sMinutesToShuttle + " Minutes</td>"));
+        + "</td><td>Every:<br>" + frequencyDisplay + " min</td><td>"
+        + nextShuttle.format("hh:mm") + "</td><td> Next Shuttle:<br>" + sMinutesToShuttle + " min</td>"));
         
         $("tbody").append(shuttleRow);
     };
