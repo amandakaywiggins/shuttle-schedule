@@ -24,6 +24,7 @@ h2 {
 }
 
 #shuttle-schedule {
+    background-color: rgb(255, 255, 255, 0.5);
     border: solid;
     border-width: 2px;
     border-radius: 6px;
@@ -35,18 +36,6 @@ h2 {
 
 hr {
     background-color: white;
-}
-
-.offwhite-label {
-    color: rgb(95, 95, 97);
-}
-
-.almostwhite-label {
-    color: rgb(155, 155, 155);
-}
-
-.white-label {
-    color: white;
 }
 
 .btn {
