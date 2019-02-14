@@ -40,5 +40,10 @@ database.ref().on("child_added" , function(childSnapshot) {
             console.log("Errors handled: " + errorObject.code);
 };
 ````
+## Author
+Amanda Kay Wiggins
+
+## Acknowledgements
+Created as part of the UT Bootcamp 
 
 This project is maintained by Amanda Kay Wiggins
